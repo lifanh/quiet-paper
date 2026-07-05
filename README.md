@@ -31,7 +31,7 @@ In `global.css`:
 @import "@lifanh/quiet-paper/styles/tailwind-theme.css";
 
 @layer base {
-  /* document defaults — see lifan-astro-minimal-theme/src/styles/global.css */
+  /* document defaults — see astro-quiet-paper/src/styles/global.css */
 }
 ```
 

@@ -30,7 +30,7 @@ We **do not** bundle Tailwind into the library. The host app runs Tailwind once:
 
 ## Consumers
 
-- **Astro:** `@astrojs/react`, import components in `.astro` with `client:*`, global CSS in layout. See [lifan-astro-minimal-theme](https://github.com/lifanh/lifan-astro-minimal-theme).
+- **Astro:** `@astrojs/react`, import components in `.astro` with `client:*`, global CSS in layout. See [astro-quiet-paper](https://github.com/lifanh/astro-quiet-paper).
 - **React SPA:** same CSS imports in `index.css`; import components as usual.
 
 ## What stays in apps
