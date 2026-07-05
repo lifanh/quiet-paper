@@ -17,6 +17,7 @@
   ],
   "scripts": {
     "build": "vite build",
+    "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },
   "exports": {

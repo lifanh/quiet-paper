@@ -1,0 +1,49 @@
+# Publish @lifanh/quiet-paper on GitHub Release (OIDC Trusted Publishing — no NPM_TOKEN).
+# npmjs.com: package → Settings → Trusted publishers → repo lifanh/quiet-paper, workflow publish.yml
+# First publish must be manual once so the package exists on npm.
+
+name: Publish
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: npm-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - run: npm ci
+
+      - run: npm run typecheck
+
+      - run: npm run build
+
+      - name: Verify version matches release tag
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+          PKG=$(node -p "require('./package.json').version")
+          EXPECTED="${TAG#v}"
+          if [ "$PKG" != "$EXPECTED" ]; then
+            echo "package.json version ($PKG) must match release tag ($TAG → $EXPECTED)"
+            exit 1
+          fi
+
+      - run: npm pack --dry-run
+
+      - run: npm publish --access public --provenance
