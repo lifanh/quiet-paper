@@ -12,6 +12,9 @@
     --color-border-subtle: var(--color-border-subtle);
     --color-accent: var(--color-accent);
     --color-accent-hover: var(--color-accent-hover);
+    --color-warning: var(--color-warning);
+    --color-warning-border: var(--color-warning-border);
+    --color-warning-surface: var(--color-warning-surface);
     --color-error: var(--color-error);
     --color-error-border: var(--color-error-border);
     --color-error-surface: var(--color-error-surface);
@@ -27,14 +30,17 @@
     --spacing-5: var(--space-5);
     --spacing-6: var(--space-6);
     --spacing-8: var(--space-8);
+    --spacing-10: var(--space-10);
     --spacing-12: var(--space-12);
     --spacing-16: var(--space-16);
 
     --text-xs: var(--text-xs);
     --text-sm: var(--text-sm);
+    --text-base: var(--text-base);
     --text-lg: var(--text-lg);
     --text-xl: var(--text-xl);
     --text-2xl: var(--text-2xl);
+    --text-3xl: var(--text-3xl);
 
     --leading-tight: var(--leading-tight);
     --leading-normal: var(--leading-normal);

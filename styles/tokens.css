@@ -14,6 +14,11 @@
     --color-accent-hover: #1f3d56;
     --color-accent-muted: #6b8a9e;
 
+    /* Amber note — distinct from error, still paper-like */
+    --color-warning: #7a4b12;
+    --color-warning-border: #d3a25c;
+    --color-warning-surface: #fbf0dc;
+
     /* Rust ink — enough red chroma for deutan/protan, still not alarm UI */
     --color-error: #a33232;
     --color-error-border: #c87868;

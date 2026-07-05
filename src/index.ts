@@ -17,3 +17,4 @@ export {
 	type HairlineTableProps,
 } from "./HairlineTable";
 export { LoadingBlock, type LoadingBlockProps } from "./LoadingBlock";
+export { Prose, type ProseProps } from "./Prose";
