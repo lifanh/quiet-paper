@@ -25,7 +25,7 @@ const proseClassName = [
 	"prose-headings:font-normal",
 	"prose-headings:tracking-normal",
 	"prose-h1:mb-5",
-	"prose-h1:mt-0",
+	"prose-h1:mt-12",
 	"prose-h1:text-3xl",
 	"prose-h1:leading-tight",
 	"prose-h2:mb-3",
