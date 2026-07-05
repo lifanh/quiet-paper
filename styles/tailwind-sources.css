@@ -1,0 +1,8 @@
+/**
+ * Register this package for Tailwind v4 class detection.
+ * Import once from the app (paths are relative to this file inside the package):
+ *
+ *   @import "@lifanh/quiet-paper/styles/tailwind-sources.css";
+ */
+/* Scan published JS so Tailwind v4 sees class names (Pattern A, Tailwind v4). */
+@source "../dist";
