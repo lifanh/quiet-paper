@@ -4,6 +4,12 @@ All notable changes to `@lifanh/quiet-paper` are documented here.
 
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.2.2] - 2026-07-12
+
+### Added
+
+- `Dialog` wrapper with Base UI accessibility behavior and quiet-paper styling.
+
 ## [0.2.1] - 2026-07-05
 
 ### Changed
@@ -32,6 +38,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/).
 - Error legibility: rust error tokens, `!` kicker marker, inline `×`, 2px invalid field border.
 - `tailwind-sources.css` for consumer Tailwind scanning (Pattern A).
 
+[0.2.2]: https://github.com/lifanh/quiet-paper/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/lifanh/quiet-paper/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/lifanh/quiet-paper/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/lifanh/quiet-paper/releases/tag/v0.1.0

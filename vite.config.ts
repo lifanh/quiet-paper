@@ -19,7 +19,12 @@ export default defineConfig({
 			fileName: "quiet-paper",
 		},
 		rollupOptions: {
-			external: ["react", "react-dom", "react/jsx-runtime"],
+			external: [
+				"@base-ui/react",
+				"react",
+				"react-dom",
+				"react/jsx-runtime",
+			],
 			output: {
 				preserveModules: false,
 			},

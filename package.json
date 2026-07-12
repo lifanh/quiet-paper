@@ -1,6 +1,6 @@
 {
   "name": "@lifanh/quiet-paper",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Quiet paper design system — Tailwind v4 tokens, React primitives, and prose styling",
   "type": "module",
   "license": "MIT",
@@ -48,5 +48,8 @@
     "typescript": "^5.9.3",
     "vite": "^7.1.7",
     "vite-plugin-dts": "^4.5.4"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.6.0"
   }
 }
