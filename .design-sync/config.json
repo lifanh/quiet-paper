@@ -1,0 +1,18 @@
+{
+  "projectId": "4d3e477a-e50e-4040-8183-77089a4cc4b6",
+  "shape": "package",
+  "pkg": "@lifanh/quiet-paper",
+  "globalName": "QuietPaper",
+  "buildCmd": "npm run build && .ds-sync/node_modules/.bin/tailwindcss -i .ds-sync/tailwind-entry.css -o .ds-sync/tailwind-out/compiled.css",
+  "cssEntry": ".ds-sync/tailwind-out/compiled.css",
+  "guidelinesGlob": [],
+  "readmeHeader": ".design-sync/conventions.md",
+  "overrides": {
+    "Dialog": { "cardMode": "single", "viewport": "480x420" },
+    "Prose": { "viewport": "900x1400" }
+  },
+  "libOverrides": {
+    "dts.mjs": "package.json only declares types under exports['.'] (no top-level types/typings field); bundled projectFor() falls back to a nonexistent pkgDir/index.d.ts entry and finds zero exports. Fork adds an exports-map lookup before that fallback.",
+    "source-kit.mjs": "hardcoded sibling import of './dts.mjs' bypasses loadLib()'s override registry; forked so its component discovery picks up the dts.mjs fork instead of the original."
+  }
+}
