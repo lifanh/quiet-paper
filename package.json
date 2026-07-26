@@ -16,7 +16,7 @@
     "**/*.css"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && node scripts/build-tokens.mjs",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },
@@ -26,9 +26,12 @@
       "import": "./dist/quiet-paper.js",
       "default": "./dist/quiet-paper.js"
     },
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens.json": "./dist/tokens.json",
     "./styles/tokens.css": "./styles/tokens.css",
     "./styles/tailwind-theme.css": "./styles/tailwind-theme.css",
-    "./styles/tailwind-sources.css": "./styles/tailwind-sources.css"
+    "./styles/tailwind-sources.css": "./styles/tailwind-sources.css",
+    "./styles/prose.css": "./styles/prose.css"
   },
   "files": [
     "dist",

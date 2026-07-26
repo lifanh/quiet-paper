@@ -26,10 +26,22 @@ stylesheet using an isolated Tailwind CLI (matching the repo's own installed
 `tailwindcss@4.3.2`, found in the main `node_modules/` as a transitive dep of
 `@tailwindcss/typography`):
 
-- `.ds-sync/tailwind-entry.css` — `@import "tailwindcss"; @plugin "@tailwindcss/typography"; @import "../styles/tailwind-sources.css"; @import "../styles/tokens.css" layer(theme); @import "../styles/tailwind-theme.css";`
+- `.ds-sync/tailwind-entry.css` — `@import "tailwindcss"; @plugin "@tailwindcss/typography"; @import "../styles/tailwind-sources.css"; @import "../styles/tokens.css" layer(theme); @import "../styles/tailwind-theme.css"; @import "../styles/prose.css";`
 - `.ds-sync/node_modules/.bin/tailwindcss -i .ds-sync/tailwind-entry.css -o .ds-sync/tailwind-out/compiled.css` (installed via `@tailwindcss/cli@4.3.2` in the isolated `.ds-sync` deps, pinned to match the repo's own tailwindcss version)
 - `cfg.buildCmd` runs `npm run build` (vite, produces `dist/`) then this compile step
 - `cfg.cssEntry` points at `.ds-sync/tailwind-out/compiled.css`
+
+**`styles/prose.css` (added 2026-07-26)**: as of the token-layer refactor
+(`docs/ARCHITECTURE.md` "Containing Tailwind's `--tw-*` internals"), `Prose`
+no longer authors `--tw-prose-*` via arbitrary-value utility classes —
+they're declared once under `.qp-prose` in `styles/prose.css`, applied by the
+component itself. `tailwind-entry.css` must `@import` this file too, or the
+compiled bundle CSS is missing the `.qp-prose` rule and the `Prose` preview
+renders with Tailwind Typography's default (unthemed) colors instead of
+quiet-paper's. Verified after the fix: `Prose`'s `_ds_sync.json` render hash
+is unchanged from before the refactor — the source change is a pure
+refactor, confirmed pixel-equivalent by the sync's own render hash, not just
+asserted.
 
 **Re-sync risk**: if the repo's `tailwindcss` version (currently resolved via
 `@tailwindcss/typography`'s peer dep) changes, re-check `.ds-sync`'s installed
@@ -39,7 +51,11 @@ with. Also: if a new component/page introduces new utility classes not yet
 used anywhere the `@source "../dist"` scrape sees, they won't appear in the
 compiled stylesheet until `npm run build` regenerates `dist/` with that usage
 baked in (this is inherent to Tailwind's content-scanning model, not
-specific to this sync).
+specific to this sync). And: if quiet-paper ever adds a *second* plain CSS
+file with component-scoped variable overrides (the same pattern as
+`prose.css`), `tailwind-entry.css` needs a matching `@import` line or its
+rules silently never reach the compiled bundle — this isn't auto-discovered,
+it's hand-wired per file.
 
 ## Forked lib scripts (`.design-sync/overrides/`)
 

@@ -1,0 +1,23 @@
+/**
+ * @lifanh/quiet-paper — Prose Tailwind Typography variable overrides.
+ * Import once in app global CSS alongside the other quiet-paper styles.
+ * Scopes `--tw-prose-*` to `.qp-prose` (applied by the Prose component)
+ * instead of authoring them through arbitrary-value utility classes.
+ */
+.qp-prose {
+    --tw-prose-body: var(--color-text);
+    --tw-prose-headings: var(--color-text);
+    --tw-prose-links: var(--color-accent);
+    --tw-prose-bold: var(--color-text);
+    --tw-prose-counters: var(--color-text-muted);
+    --tw-prose-bullets: var(--color-text-muted);
+    --tw-prose-hr: var(--color-border-subtle);
+    --tw-prose-quotes: var(--color-text-muted);
+    --tw-prose-quote-borders: var(--color-border);
+    --tw-prose-captions: var(--color-text-muted);
+    --tw-prose-code: var(--color-text);
+    --tw-prose-pre-code: var(--color-text);
+    --tw-prose-pre-bg: var(--color-surface);
+    --tw-prose-th-borders: var(--color-border);
+    --tw-prose-td-borders: var(--color-border-subtle);
+}

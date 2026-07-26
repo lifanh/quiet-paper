@@ -32,11 +32,34 @@ In `global.css`:
 @import "@lifanh/quiet-paper/styles/tailwind-sources.css";
 @import "@lifanh/quiet-paper/styles/tokens.css" layer(theme);
 @import "@lifanh/quiet-paper/styles/tailwind-theme.css";
+@import "@lifanh/quiet-paper/styles/prose.css";
 
 @layer base {
   /* document defaults — see astro-quiet-paper/src/styles/global.css */
 }
 ```
+
+### Non-Tailwind consumers
+
+No Tailwind build? Link the standalone token layer directly — it's plain CSS,
+zero Tailwind involvement, and every custom property resolves on its own:
+
+```html
+<link rel="stylesheet" href="node_modules/@lifanh/quiet-paper/tokens.css">
+```
+
+```css
+.card {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+```
+
+`@lifanh/quiet-paper/tokens.json` ships the same values keyed by custom
+property name, for tooling that would rather not parse CSS.
 
 ## Use
 
@@ -88,7 +111,11 @@ Supported tones: `qp-callout-note`, `qp-callout-warning`, `qp-callout-error`.
 
 ## Canonical tokens
 
-Edit `styles/tokens.css` here first; apps should not fork hex values in components.
+Edit `src/tokens/tokens.ts` here first — it is the single source of truth.
+`npm run build` regenerates `dist/tokens.css`, `dist/tokens.json`,
+`styles/tokens.css`, and `styles/tailwind-theme.css` from it; apps should not
+fork hex values in components. See [Architecture](./docs/ARCHITECTURE.md) for
+the full source → artifact flow.
 
 ## Why `tailwind-sources.css`?
 
@@ -104,6 +131,7 @@ All consumers are expected to use **Tailwind CSS v4**. Setup:
 @import "@lifanh/quiet-paper/styles/tailwind-sources.css";
 @import "@lifanh/quiet-paper/styles/tokens.css" layer(theme);
 @import "@lifanh/quiet-paper/styles/tailwind-theme.css";
+@import "@lifanh/quiet-paper/styles/prose.css";
 ```
 
 No pre-built utility CSS in this package; the app’s Tailwind build generates utilities after scanning package sources via `tailwind-sources.css`.
